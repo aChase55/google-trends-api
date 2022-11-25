@@ -36,6 +36,8 @@ export default function request({method, host, path, qs, agent}) {
   // will use cached cookieVal if set on 429 error
   if (cookieVal) options.headers = {'cookie': cookieVal};
 
+  options.headers["Access-Control-Allow-Origin"] = "*"
+  
   return new Promise((resolve, reject) => {
     const req = https.request(options, (res) => {
       let chunk = '';
